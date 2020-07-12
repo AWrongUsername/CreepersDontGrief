@@ -1,2 +1,2 @@
 # CreepersDontGrief
-Makes your creepers go hurt but no damage!
+Makes creepers do damage but doesn't allow block-breaking. Build for 1.15.2.
