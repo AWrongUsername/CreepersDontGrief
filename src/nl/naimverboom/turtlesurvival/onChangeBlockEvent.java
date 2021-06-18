@@ -26,8 +26,10 @@ public class onChangeBlockEvent implements Listener {
                 BlockData blockdata = destroyed_s.getBlockData();
                 Location location = destroyed_s.getLocation();
                 World world = location.getWorld();
-                world.getBlockAt(location).setType(destroyed_s.getBlockData().getMaterial());
-                world.getBlockAt(location).setBlockData(blockdata);
+                Block newBlock = world.getBlockAt(location);
+                newBlock.setType(destroyed_s.getType());
+                newBlock.setBlockData(blockdata);
+                newBlock.getState().update();
             }
         }
     }
