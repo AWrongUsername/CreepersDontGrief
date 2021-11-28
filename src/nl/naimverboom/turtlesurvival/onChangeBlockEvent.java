@@ -1,8 +1,6 @@
 package nl.naimverboom.turtlesurvival;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.EntityType;
@@ -31,6 +29,11 @@ public class onChangeBlockEvent implements Listener {
                 newBlock.setBlockData(blockdata);
                 newBlock.getState().update();
             }
+
+            World eventWorld = event.getEntity().getWorld();
+            Location eventLocation = event.getEntity().getLocation();
+            eventWorld.playSound(eventLocation, Sound.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 1, 1);
+            eventWorld.spawnParticle(Particle.EXPLOSION_LARGE, eventLocation, 20, 1, 1, 1);
         }
     }
 
